@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  Montserrat_400Regular,
+  Montserrat_700Bold,
+  Montserrat_900Black,
+  useFonts,
+} from '@expo-google-fonts/montserrat';
+
+import { Loading } from './src/components/Loading/index';
+import { Routes } from './src/routes/index';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [fontsLoaded] = useFonts({
+    Montserrat_400Regular,
+    Montserrat_700Bold,
+    Montserrat_900Black,
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  return <SafeAreaView style={{ flex: 1 }}>{fontsLoaded ? <Routes /> : <Loading />}</SafeAreaView>;
+}
