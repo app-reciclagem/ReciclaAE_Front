@@ -9,6 +9,7 @@ import {
 
 import { Loading } from './src/components/Loading/index';
 import { Routes } from './src/routes/index';
+import { LoginRegister } from './src/screens/LoginRegister';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -17,5 +18,5 @@ export default function App() {
     Montserrat_900Black,
   });
 
-  return <SafeAreaView style={{ flex: 1 }}>{fontsLoaded ? <Routes /> : <Loading />}</SafeAreaView>;
+  return <SafeAreaView style={{ flex: 1 }}>{fontsLoaded ? <Routes /> : <Loading />}</SafeAreaView>
 }

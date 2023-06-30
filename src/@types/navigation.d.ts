@@ -3,7 +3,7 @@ export declare global {
     interface RootParamList {
       Welcome: undefined;
       Home: undefined;
-      LoginRegister: undefined;
+      LoginRegister: { is: boolean };
       MapScreen: undefined;
       Profile: undefined;
     }
