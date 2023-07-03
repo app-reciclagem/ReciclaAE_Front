@@ -11,6 +11,7 @@ import {
 import { RouteProp } from "@react-navigation/native";
 
 import { Login } from '../../components/Login'
+import { Register } from '../../components/Register'
 import { Header } from '../../components/Header'
 import { styles } from "./styles";
 
@@ -37,7 +38,7 @@ export const LoginRegister = ({ route }: ILoginRegisterProps) => {
 
       <View style={{zIndex: 2}}>
         <Header is={onLogin} tipo={setOnLogin} />
-        {onLogin ? <Login /> : <View><Text>Registro</Text></View>}
+        {onLogin ? <Login /> : <Register/>}
       </View>
     </View>
   )

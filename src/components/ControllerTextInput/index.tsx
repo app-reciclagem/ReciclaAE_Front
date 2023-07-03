@@ -17,7 +17,6 @@ export function ControllerTextInput<FormRegisterType extends FieldValues>({
         <TextInputField
           label={label}
           value={field.value}
-          onChangeText={field.onChange}
           onBlur={field.onBlur}
           errorMessage={fieldState.error?.message}
           {...textInputProps}
