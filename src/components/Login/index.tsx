@@ -5,26 +5,33 @@ import {
   TouchableWithoutFeedback,
   View,
   TouchableOpacity,
-} from "react-native";
+} from 'react-native';
 
-import { ControllerTextInput } from "../ControllerTextInput";
-import {styles} from "./styles";
-import { useForm } from "react-hook-form";
-import { ButtonSocialGoogle } from "../ButtonSocialGoogle/ButtonSocialGoogle";
-import { API } from "../../API";
-type data = {
-  email: string,
-  password: string,
-}
+import { ControllerTextInput } from '../ControllerTextInput';
+import { styles } from './styles';
+import { useForm } from 'react-hook-form';
+import { ButtonSocialGoogle } from '../ButtonSocialGoogle/ButtonSocialGoogle';
+import { API } from '../../api';
+import { useMyContext } from '../../context/hook';
+import { useNavigation } from '@react-navigation/native';
+
+type FormDataLogin = {
+  email: string;
+  password: string;
+};
 
 export const Login = () => {
+  const navigation = useNavigation();
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormDataLogin>();
 
-  const onSubmit = async () => {
+  const { login } = useMyContext();
+
+  const handleSignIn = async ({ email, password }: FormDataLogin) => {
+    await login(email, password);
   };
 
   return (
@@ -34,22 +41,22 @@ export const Login = () => {
           <KeyboardAvoidingView behavior="position" enabled>
             <ControllerTextInput
               name="email"
-              label = "Email"
+              label="Email"
               control={control}
-              rules={{ required: "Email é obrigatorio" }}
+              rules={{ required: 'Email é obrigatorio' }}
             />
             <ControllerTextInput
               name="password"
               label="Senha"
               control={control}
-              rules={{ required: " Senha é obrigatorio" }}
+              rules={{ required: ' Senha é obrigatorio' }}
               secureTextEntry
             />
           </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
       </View>
       <View>
-        <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit(handleSignIn)}>
           <Text style={styles.textEntrar}>ENTRAR</Text>
         </TouchableOpacity>
         <Text style={styles.text}>Esqueceu sua senha?</Text>

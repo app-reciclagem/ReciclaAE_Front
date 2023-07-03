@@ -1,15 +1,16 @@
-import 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   Montserrat_400Regular,
   Montserrat_700Bold,
   Montserrat_900Black,
   useFonts,
 } from '@expo-google-fonts/montserrat';
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
+import 'react-native-gesture-handler';
 
 import { Loading } from './src/components/Loading/index';
+import { AuthProvider } from './src/context/provider';
 import { Routes } from './src/routes/index';
-import { LoginRegister } from './src/screens/LoginRegister';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,5 +19,10 @@ export default function App() {
     Montserrat_900Black,
   });
 
-  return <SafeAreaView style={{ flex: 1 }}>{fontsLoaded ? <Routes /> : <Loading />}</SafeAreaView>
+  return (
+    <NavigationContainer>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
+      <AuthProvider>{fontsLoaded ? <Routes /> : <Loading />}</AuthProvider>
+    </NavigationContainer>
+  );
 }

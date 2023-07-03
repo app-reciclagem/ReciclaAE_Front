@@ -1,11 +1,9 @@
-import { NavigationContainer } from '@react-navigation/native';
-
-import { PublicStackRoutes } from './public/stack.routes';
+import { useMyContext } from '../context/hook';
+import { RoutesPrivadas } from './private/private.routes';
+import { AuthRoutes } from './public/public.routes';
 
 export const Routes = () => {
-  return (
-    <NavigationContainer>
-      <PublicStackRoutes />
-    </NavigationContainer>
-  );
+  const { isLogado } = useMyContext();
+
+  return isLogado ? <RoutesPrivadas /> : <AuthRoutes />;
 };

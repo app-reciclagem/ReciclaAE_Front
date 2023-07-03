@@ -1,19 +1,19 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
- export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        gap: 20,
-      },
-      inputsContainer: {
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 20,
-        marginBottom: 60,
-      },
-      text: {
-        marginTop: 8,
-      },
-})
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    gap: 20,
+  },
+  inputsContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 20,
+    marginBottom: 60,
+  },
+  text: {
+    marginTop: 8,
+  },
+});
