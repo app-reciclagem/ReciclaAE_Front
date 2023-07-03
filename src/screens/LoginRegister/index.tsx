@@ -11,6 +11,7 @@ import {
 import { RouteProp } from '@react-navigation/native';
 
 import { Login } from '../../components/Login';
+import { Register } from '../../components/Register'
 import { Header } from '../../components/Header';
 import { styles } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -40,16 +41,9 @@ export const LoginRegister = ({ route }: ILoginRegisterProps) => {
           />
         </View>
 
-        <View style={{ zIndex: 2 }}>
-          <Header is={onLogin} tipo={setOnLogin} />
-          {onLogin ? (
-            <Login />
-          ) : (
-            <View>
-              <Text>Registro</Text>
-            </View>
-          )}
-        </View>
+      <View style={{zIndex: 2}}>
+        <Header is={onLogin} tipo={setOnLogin} />
+        {onLogin ? <Login /> : <Register/>}
       </View>
     </SafeAreaView>
   );
