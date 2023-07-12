@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     gap: 20,
+    borderWidth: 5
   },
   inputsContainer: {
     justifyContent: 'center',
