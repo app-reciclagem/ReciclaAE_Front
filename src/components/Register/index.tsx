@@ -93,7 +93,7 @@ export const Register = () => {
               //rules={{ required: " Confirmação de senha é obrigatoria!" }}
               secureTextEntry
             />
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={stylesRegister.text}>
               <Text>Coletor</Text>
               <Controller
                 control={control}
@@ -115,7 +115,7 @@ export const Register = () => {
           <Text style={stylesRegister.textEntrar}>REGISTRAR</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View style={stylesRegister.text}>
         <Text>Termos de uso</Text>
         <Controller
           name="termosDeUso"
@@ -130,7 +130,7 @@ export const Register = () => {
           )}
         />
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <View style={stylesRegister.text}>
         <Text>Políticas de privacidade</Text>
         <Controller
           name="politicaDePrivacidade"
