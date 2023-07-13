@@ -6,10 +6,13 @@ import {
   View,
   TouchableOpacity,
   StyleSheet,
-} from "react-native";
+} from 'react-native';
+import ModalSelector from 'react-native-modal-selector';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { ControllerTextInput } from "../ControllerTextInput";
+import { ControllerTextInput } from '../ControllerTextInput';
 import Checkbox from 'expo-checkbox';
+
 import React, {useState} from 'react';
 import {stylesRegister} from "./stylesRegister";
 import { useForm } from "react-hook-form";
@@ -17,20 +20,24 @@ import { ButtonSocialGoogle } from "../ButtonSocialGoogle/ButtonSocialGoogle";
 import { Controller } from "react-hook-form";
 import { API } from "../../api";
 import { onChange } from "react-native-reanimated";
+import { styles } from '../TextInputField/styles';
+import { ResponseLoginData } from '../../@types/types';
+
 type data = {
-  name: string,
-  email: string,
-  password: string,
-  confirmPassword: string
-}
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 type FormRegister = {
-  name: string,
-  email: string,
-  password: string,
-  confirmPassword: string,
-  termosDeUso: string,
-  politicaDePrivacidade: string
-}
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  termosDeUso: string;
+  politicaDePrivacidade: string;
+  role: string;
+};
 
 export const Register = () => {
   const {
@@ -39,18 +46,21 @@ export const Register = () => {
     formState: { errors },
   } = useForm<FormRegister>();
 
-  const onSubmit = async (data:FormRegister) => {
-    // try{
-    //   const result = await API.post("users", data);
-    //   console.log(result);
-    // }catch{
+  const onSubmit = async (data: FormRegister) => {
+    data.role ? data.role = "Admin" : data.role = "User"
+    try {
+      const result = await API.post('users', data);
 
-    // }
-    console.log(data);
+      const { user, token } = result.data as ResponseLoginData;
+
+      API.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+      await AsyncStorage.setItem('Auth.user', JSON.stringify(user));
+      await AsyncStorage.setItem('Auth.token', token);
+    } catch (e) {
+      console.log(e);
+    }
   };
-
-  const [isChecked, setChecked] = useState(false);
-
 
   return (
     <View style={stylesRegister.container}>
@@ -59,13 +69,13 @@ export const Register = () => {
           <KeyboardAvoidingView behavior="position" enabled>
             <ControllerTextInput
               name="name"
-              label = "Nome completo"
+              label="Nome completo"
               control={control}
               //rules={{ required: "Nome é obrigatorio" }}
             />
             <ControllerTextInput
               name="email"
-              label = "Email"
+              label="Email"
               control={control}
               //rules={{ required: "Email é obrigatorio" }}
             />
@@ -83,6 +93,20 @@ export const Register = () => {
               //rules={{ required: " Confirmação de senha é obrigatoria!" }}
               secureTextEntry
             />
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text>Coletor</Text>
+              <Controller
+                control={control}
+                name="role"
+                defaultValue="false"
+                render={({ field: { onChange, value } }) => (
+                  <Checkbox
+                    value={value === 'true'}
+                    onValueChange={(newValue) => onChange(newValue.toString())}
+                  />
+                )}
+              />
+            </View>
           </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
       </View>
@@ -92,30 +116,35 @@ export const Register = () => {
         </TouchableOpacity>
       </View>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-      <Text>Termos de uso</Text>
-      <Controller
-      name="termosDeUso"
-      control={control}
-      defaultValue="false"
-      //rules={{required:true}}
-      render={({ field: {onChange, value} }) => (
-        <Checkbox value={value === "true"} onValueChange={(newValue) => onChange(newValue.toString())}/>
-      )}
-    />
-    </View>
+        <Text>Termos de uso</Text>
+        <Controller
+          name="termosDeUso"
+          control={control}
+          defaultValue="false"
+          //rules={{required:true}}
+          render={({ field: { onChange, value } }) => (
+            <Checkbox
+              value={value === 'true'}
+              onValueChange={(newValue) => onChange(newValue.toString())}
+            />
+          )}
+        />
+      </View>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-      <Text>Políticas de privacidade</Text>
-      <Controller
-      name="politicaDePrivacidade"
-      control={control}
-      defaultValue="false"
-      //rules={{required:true}}
-      render={({ field: {onChange, value} }) => (
-        <Checkbox value={value === "true"} onValueChange={(newValue) => onChange(newValue.toString())}/>
-      )}
-    />
+        <Text>Políticas de privacidade</Text>
+        <Controller
+          name="politicaDePrivacidade"
+          control={control}
+          defaultValue="false"
+          //rules={{required:true}}
+          render={({ field: { onChange, value } }) => (
+            <Checkbox
+              value={value === 'true'}
+              onValueChange={(newValue) => onChange(newValue.toString())}
+            />
+          )}
+        />
+      </View>
     </View>
-    </View>
-    
   );
 };

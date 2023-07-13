@@ -3,9 +3,9 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
     gap: 20,
+    borderWidth: 5
   },
   inputsContainer: {
     justifyContent: 'center',

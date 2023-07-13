@@ -1,6 +1,9 @@
+import { Container } from './styles';
+import React from 'react';
+import { ImageBackground, Image, Text, View, TouchableOpacity } from 'react-native';
+import { styles } from '../Welcome/styles';
+import { LoginRegister } from '../LoginRegister';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity, View } from 'react-native';
-import { Container, Text } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const Welcome = () => {
@@ -13,19 +16,25 @@ export const Welcome = () => {
   const openScreenLogin = () => {
     navigation.navigate('LoginRegister', { is: true });
   };
+  //const navigation = useNavigation()
   return (
-    <SafeAreaView>
-      <Container>
-        <Text>Welcome</Text>
+    <View style={styles.container}>
+      <ImageBackground source={require('../../assets/fundo.png')} style={styles.imageBackground}>
+        <Image source={require('../../assets/logo.png')} style={styles.imageForeground} />
         <View>
-          <TouchableOpacity onPress={openScreenRegister}>
+          <Text style={styles.text}>
+            Sejam bem vindos ao ReciclAE {'\n'} Seu app de reciclagem!
+          </Text>
+        </View>
+        <View style={styles.containerr}>
+          <TouchableOpacity style={styles.button} onPress={openScreenRegister}>
             <Text>Register</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={openScreenLogin}>
+          <TouchableOpacity style={styles.button} onPress={openScreenLogin}>
             <Text>Login</Text>
           </TouchableOpacity>
         </View>
-      </Container>
-    </SafeAreaView>
+      </ImageBackground>
+    </View>
   );
 };

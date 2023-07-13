@@ -30,9 +30,10 @@ export const AuthProvider = ({ children }: IProps) => {
     };
 
     try {
-      const response = await API.post('/login', dados);
+      const response = await API.post('/auth/user', dados);
 
       const { user, token } = response.data as ResponseLoginData;
+      console.log(user);
 
       API.defaults.headers.common.Authorization = `Bearer ${token}`;
 
