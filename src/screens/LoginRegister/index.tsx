@@ -40,10 +40,12 @@ export const LoginRegister = ({ route }: ILoginRegisterProps) => {
             style={{ resizeMode: 'cover' }}
           />
         </View>
+
       </View>
       <View style={{ zIndex: 2, flex: 1 }}>
         <Header is={onLogin} tipo={setOnLogin} />
         {onLogin ? <Login /> : <Register />}
+
       </View>
     </SafeAreaView>
   );
