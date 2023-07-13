@@ -24,6 +24,8 @@ export const AuthProvider = ({ children }: IProps) => {
   };
 
   const login = async (email: string, password: string) => {
+
+
     const dados = {
       email,
       password,
@@ -33,7 +35,7 @@ export const AuthProvider = ({ children }: IProps) => {
       const response = await API.post('/auth/user', dados);
 
       const { user, token } = response.data as ResponseLoginData;
-      console.log(user);
+      console.log({user, token});
 
       API.defaults.headers.common.Authorization = `Bearer ${token}`;
 

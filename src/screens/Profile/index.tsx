@@ -25,6 +25,8 @@ import { styles } from '../Profile/styles';
 import { CollectPoint } from '../../components/CollectPoint';
 // import { Point, pointList } from '../../../data/pointList';
 import { API } from '../../api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useMyContext } from '../../context/hook';
 
 const dadosUsuario = {
   img: 'img',
@@ -60,6 +62,8 @@ export const Profile = () => {
 
   const [editItem, setEditItem] = useState<IPoint | null>(null);
 
+  const { user } = useMyContext();
+
   const handleGetPoints = async () => {
     const result = await API.get('/points');
     console.log('chamou');
@@ -72,6 +76,9 @@ export const Profile = () => {
   useEffect(() => {
     
     handleGetPoints();
+
+
+
   }, []);
 
   const handleImagePicker = async () => {
@@ -150,8 +157,8 @@ export const Profile = () => {
       
     </View> */}
 
-          <Text style={styles.textUser}>{dadosUsuario.nome}</Text>
-          <Text style={styles.textUser}>{dadosUsuario.email}</Text>
+          <Text style={styles.textUser}>{user?.name}</Text>
+          <Text style={styles.textUser}>{user?.email}</Text>
         </View>
 
         <Animatable.View delay={600} animation="fadeInUp" style={styles.Form}>

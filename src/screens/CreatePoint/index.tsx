@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
-import { View, TouchableOpacity, Text, SafeAreaView, TextInput, ImageBackground , Image} from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { View, TouchableOpacity, Text, SafeAreaView, TextInput, ImageBackground , Image, Alert} from 'react-native';
 import { styles } from '../CreatePoint/styles';
 import { Checkbox } from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
 import LocationCoordinates from '../../services/geo';
+import { getAddressAsync, Address } from '../../services/utils';
+import { useFocusEffect } from '@react-navigation/native';
+import Geolocation from 'react-native-geolocation-service';
+import { Point } from '../../@types/types';
+import { useMyContext } from '../../context/hook';
+import { API } from '../../api';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 export const CreatePoint = () => {
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
+  const [address, setAddress] = useState<Address | null>(null);
+
+  const navigation = useNavigation();
 
     const [image, setImage] = useState(
         'https://img.freepik.com/premium-vector/gallery-icon-picture-landscape-vector-sign-symbol_660702-224.jpg'
@@ -38,19 +50,35 @@ export const CreatePoint = () => {
     }
   };
 
-  const handleSubmit = () => {
-    // enviar os dados para a API
-    console.log('Ponto criado:', {
-      pointName,
-      collectionTime,
-      selectedTypes,
-    });
+  const handleSubmit = async () => {
 
-    setPointName('');
-    setCollectionTime('');
-    setSelectedTypes([]);
+   
+
+    const dados = {
+      city: address?.street! + ' ' + address?.streetNumber!,
+      state: address?.city!,
+      latitude: Number(latitude),
+      longitude: Number(longitude),
+      name: pointName,
+    }
+
+    try {
+
+      const response = await API.post("/points", dados);
+      
+      navigation.navigate('Profile');
+
+    } catch (err) {
+      console.log(err)
+    }
+
   };
 
+  useFocusEffect(
+    useCallback(() => {
+      getAddressAsync(setAddress);
+    }, [])
+  );
   return (
     <View style={styles.container}>
       <ImageBackground source={require('../../assets/fundo.png')} style={styles.image}>
@@ -70,8 +98,10 @@ export const CreatePoint = () => {
         <View>
           <Text style={styles.txt}>Nome do Local</Text>
           <TextInput style={styles.input} value={pointName} onChangeText={setPointName} placeholder="Nome do Local" />
-          <Text style={styles.txt}>Horário de Funcionamento</Text>
-          <TextInput style={styles.input} value={collectionTime} onChangeText={setCollectionTime} placeholder="Horário" />
+          <Text style={styles.txt}>Latitude</Text>
+          <TextInput style={styles.input} value={latitude} onChangeText={setLatitude} placeholder="Latitude" />
+          <Text style={styles.txt}>Longitude</Text>
+          <TextInput style={styles.input} value={longitude} onChangeText={setLongitude} placeholder="Longitude" />
         </View>
         {/* <Text style={styles.txt}>Tipo de lixo:</Text>
         

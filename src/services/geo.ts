@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 
-const LocationCoordinates = () => {
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
+const LocationCoordinates = (setLatitude: any, setLongitude: any) => {
 
-  useEffect(() => {
     Geolocation.getCurrentPosition(
       (position) => {
         setLatitude(position.coords.latitude);
@@ -18,11 +15,8 @@ const LocationCoordinates = () => {
       },
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     );
-  }, []);
-
   // Use a variável "latitude" e "longitude" conforme necessário
 
-  return null;
 };
 
 export default LocationCoordinates;

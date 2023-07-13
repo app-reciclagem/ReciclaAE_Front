@@ -5,6 +5,8 @@ export type Address = {
   street: string | null;
   streetNumber: string | null;
   city: string | null;
+  latitude?: number;
+  longitude?: number;
 };
 
 type SetAddressFunction = Dispatch<SetStateAction<Address | null>>;
@@ -26,6 +28,8 @@ export const getAddressAsync = async (setAddress: SetAddressFunction) => {
       latitude: location.coords.latitude,
       longitude: location.coords.longitude,
     });
+
+    console.log('voida'  + JSON.stringify(addressResponse));
 
     // Extrai o primeiro resultado do endereço e define no estado
     if (addressResponse.length > 0) {
