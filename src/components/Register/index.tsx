@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import ModalSelector from 'react-native-modal-selector';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { ControllerTextInput } from '../ControllerTextInput';
@@ -71,26 +70,26 @@ export const Register = () => {
               name="name"
               label="Nome completo"
               control={control}
-              //rules={{ required: "Nome é obrigatorio" }}
+              rules={{ required: "Nome é obrigatorio" }}
             />
             <ControllerTextInput
               name="email"
               label="Email"
               control={control}
-              //rules={{ required: "Email é obrigatorio" }}
+              rules={{ required: "Email é obrigatorio" }}
             />
             <ControllerTextInput
               name="password"
               label="Senha"
               control={control}
-              //rules={{ required: " Senha é obrigatorio" }}
+              rules={{ required: " Senha é obrigatorio" }}
               secureTextEntry
             />
             <ControllerTextInput
               name="password"
               label="Confirmar senha"
               control={control}
-              //rules={{ required: " Confirmação de senha é obrigatoria!" }}
+              rules={{ required: " Confirmação de senha é obrigatoria!" }}
               secureTextEntry
             />
             <View style={stylesRegister.text}>
@@ -136,7 +135,7 @@ export const Register = () => {
           name="politicaDePrivacidade"
           control={control}
           defaultValue="false"
-          //rules={{required:true}}
+          rules={{required:true}}
           render={({ field: { onChange, value } }) => (
             <Checkbox
               value={value === 'true'}
