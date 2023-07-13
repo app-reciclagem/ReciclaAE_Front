@@ -33,5 +33,5 @@ export const stylesRegister = StyleSheet.create({
   },
   textSG:{
     color: '#8AC449'
-  }
+  },
 })

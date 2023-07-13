@@ -35,16 +35,17 @@ export const LoginRegister = ({ route }: ILoginRegisterProps) => {
       <View style={styles.container}>
         <View style={{ zIndex: 1, position: 'absolute' }}>
           <Image
-            source={require('../../assets/Splash.png')}
+            source={require('../../assets/image-background.png')}
             alt="Plano de fundo do app"
-            style={{ resizeMode: 'contain' }}
+            style={{ resizeMode: 'cover' }}
           />
         </View>
 
-        <View style={{ zIndex: 2 }}>
-          <Header is={onLogin} tipo={setOnLogin} />
-          {onLogin ? <Login /> : <Register />}
-        </View>
+      </View>
+      <View style={{ zIndex: 2, flex: 1 }}>
+        <Header is={onLogin} tipo={setOnLogin} />
+        {onLogin ? <Login /> : <Register />}
+
       </View>
     </SafeAreaView>
   );
