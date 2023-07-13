@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as Animatable from 'react-native-animatable';
+import { useNavigation } from '@react-navigation/native';
 const Stack = createBottomTabNavigator();
 import * as ImagePicker from 'expo-image-picker';
 import {
@@ -34,7 +35,7 @@ const dadosUsuario = {
 export type IPoint = {
   id: string;
   name: string;
-  tipoLixo: string[];
+  tipoLixo: number[];
   latitude: number;
   longitude: number;
   city: string;
@@ -122,11 +123,14 @@ export const Profile = () => {
     ]);
   };
 
+  const navigation = useNavigation();
+
   function handleAddPoint() {
-    setEditItem(null);
-    setNewPointName('');
-    setNewPointTime('');
-    setModalVisible(true);
+    // setEditItem(null);
+    // setNewPointName('');
+    // setNewPointTime('');
+    // setModalVisible(true);
+    navigation.navigate('CreatePoint');
   }
 
   function handleSubmitPoint() {
@@ -136,7 +140,7 @@ export const Profile = () => {
   
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../../../assets/fundo.png')} style={styles.image}>
+      <ImageBackground source={require('../../assets/fundo.png')} style={styles.image}>
         <View style={styles.userBox}>
           <TouchableOpacity onPress={handleImagePicker}>
             <Image source={{ uri: image }} style={styles.imgPerfil} />
@@ -183,7 +187,7 @@ export const Profile = () => {
             <TouchableOpacity onPress={handleAddPoint} style={styles.b}>
               <Image
                 style={styles.bIcon}
-                source={require('../../../assets/iconsPerfil/icon_add_point.png')}
+                source={require('../../assets/iconsPerfil/icon_add_point.png')}
               />
               <Text style={{ color: '#fff' }}>Adicionar pontos de coleta</Text>
             </TouchableOpacity>

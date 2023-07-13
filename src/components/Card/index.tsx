@@ -3,9 +3,10 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { Image } from 'react-native';
+import {Garbage} from '../Garbage/index'
 
 export type IPonto = {
-  tipoLixo: string[];
+  tipoLixo: number[];
   photo: string;
   name: string;
   time: string;
@@ -25,12 +26,7 @@ export const Card = ({ tipoLixo, photo, name, time }: IPonto) => {
         <View style={styles.garbages}>
           {tipoLixo.map((item, index) => (
             <View style={styles.garbage}>
-              <Image
-                style={{ resizeMode: 'contain', zIndex: 5 }}
-                key={index}
-                source={{ uri: item }}
-                alt="garbages"
-              />
+              <Garbage num={item} />
             </View>
           ))}
         </View>

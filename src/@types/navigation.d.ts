@@ -6,6 +6,7 @@ export declare global {
       LoginRegister: { is: boolean };
       MapScreen: undefined;
       Profile: undefined;
+      CreatePoint: undefined
     }
   }
 }

@@ -3,8 +3,11 @@ import { View, TouchableOpacity, Text, SafeAreaView, TextInput, ImageBackground 
 import { styles } from '../CreatePoint/styles';
 import { Checkbox } from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
+import LocationCoordinates from '../../services/geo';
 
 export const CreatePoint = () => {
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
 
     const [image, setImage] = useState(
         'https://img.freepik.com/premium-vector/gallery-icon-picture-landscape-vector-sign-symbol_660702-224.jpg'
@@ -70,7 +73,7 @@ export const CreatePoint = () => {
           <Text style={styles.txt}>Horário de Funcionamento</Text>
           <TextInput style={styles.input} value={collectionTime} onChangeText={setCollectionTime} placeholder="Horário" />
         </View>
-        <Text style={styles.txt}>Tipo de lixo:</Text>
+        {/* <Text style={styles.txt}>Tipo de lixo:</Text>
         
         <View style={styles.box}>
             <View>
@@ -110,7 +113,7 @@ export const CreatePoint = () => {
             </View>
           
          
-        </View>
+        </View> */}
         </View>
 
         <TouchableOpacity style={styles.btnSubmmit} onPress={handleSubmit}>

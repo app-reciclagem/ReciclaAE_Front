@@ -29,9 +29,11 @@ export const styles = StyleSheet.create({
 
 kindTrash: {
   flexDirection: 'row',
+  borderWidth: 1
 },
 
-imgTrash : {
+  imgTrash: {
+  borderWidth: 1,
   width:20,
   height:20,
   marginTop:5,

@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 
 import { StyleSheet } from 'react-native';
-import { Home, MapScreen, Profile } from '../../screens';
+import { Home, MapScreen, Profile, CreatePoint } from '../../screens';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -35,6 +35,7 @@ export const RoutesPrivadas = () => {
       <Screen name="Map" component={MapScreen} />
       <Screen name="Home" component={Home} />
       <Screen name="Profile" component={Profile} />
+      <Screen name="CreatePoint" component={CreatePoint} />
     </Navigator>
   );
 };
