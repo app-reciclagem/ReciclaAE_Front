@@ -15,7 +15,7 @@ import {stylesRegister} from "./stylesRegister";
 import { useForm } from "react-hook-form";
 import { ButtonSocialGoogle } from "../ButtonSocialGoogle/ButtonSocialGoogle";
 import { Controller } from "react-hook-form";
-import { API } from "../../API";
+import { API } from "../../api";
 import { onChange } from "react-native-reanimated";
 type data = {
   name: string,
