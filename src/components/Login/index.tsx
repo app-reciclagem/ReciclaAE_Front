@@ -30,8 +30,9 @@ export const Login = () => {
 
   const { login } = useMyContext();
 
-  const handleSignIn = async ({ email, password }: FormDataLogin) => {
-    await login(email, password);
+  const handleSignIn = async (data: FormDataLogin) => {
+    console.log(data);
+    // await login(email, password);
   };
 
   return (

@@ -12,14 +12,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { ControllerTextInput } from '../ControllerTextInput';
 import Checkbox from 'expo-checkbox';
-import React, { useState } from 'react';
-import { stylesRegister } from './stylesRegister';
-import { useForm } from 'react-hook-form';
-import { ButtonSocialGoogle } from '../ButtonSocialGoogle/ButtonSocialGoogle';
-import { Controller } from 'react-hook-form';
-import { API } from '../../api';
-import { onChange } from 'react-native-reanimated';
-import DropDownPicker from 'react-native-dropdown-picker';
+
+import React, {useState} from 'react';
+import {stylesRegister} from "./stylesRegister";
+import { useForm } from "react-hook-form";
+import { ButtonSocialGoogle } from "../ButtonSocialGoogle/ButtonSocialGoogle";
+import { Controller } from "react-hook-form";
+import { API } from "../../api";
+import { onChange } from "react-native-reanimated";
 import { styles } from '../TextInputField/styles';
 import { ResponseLoginData } from '../../@types/types';
 
