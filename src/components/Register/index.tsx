@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Checkbox from 'expo-checkbox';
 import { ControllerTextInput } from '../ControllerTextInput';
@@ -95,13 +96,13 @@ export const Register = () => {
               name="email"
               label="Email"
               control={control}
-              rules={{ required: 'Email é obrigatorio' }}
+              rules={{ required: "Email é obrigatorio" }}
             />
             <ControllerTextInput
               name="password"
               label="Senha"
               control={control}
-              rules={{ required: ' Senha é obrigatorio' }}
+              rules={{ required: " Senha é obrigatorio" }}
               secureTextEntry
             />
             <ControllerTextInput
@@ -161,7 +162,6 @@ export const Register = () => {
           <Text style={stylesRegister.textEntrar}>REGISTRAR</Text>
         </TouchableOpacity>
       </View>
-
       <Modal
         visible={isModalVisible}
         transparent={true}

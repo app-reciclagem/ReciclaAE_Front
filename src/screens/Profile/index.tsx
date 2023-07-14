@@ -159,7 +159,9 @@ export const Profile = () => {
 
           <Text style={styles.textUser}>{user?.name}</Text>
           <Text style={styles.textUser}>{user?.email}</Text>
-          <TouchableOpacity onPress={logout}><Text>Sair</Text></TouchableOpacity>
+          <TouchableOpacity onPress = {logout}>
+            <Text style={styles.logout}>Sair</Text>
+          </TouchableOpacity>
         </View>
 
         <Animatable.View delay={600} animation="fadeInUp" style={styles.Form}>

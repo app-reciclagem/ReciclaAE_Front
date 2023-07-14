@@ -136,6 +136,10 @@ btnBox:{
     width: 300,
   },
 
+  logout:{
+    color: '#8AC449',
+    textDecorationLine: 'underline'
+  }
 
   
       
