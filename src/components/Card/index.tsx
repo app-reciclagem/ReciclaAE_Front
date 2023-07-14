@@ -22,8 +22,8 @@ export const Card = ({ tipoLixo, photo, name, time }: IPonto) => {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <View style={styles.garbages}>
-          {tipoLixo.map((item, index) => (
-            <View style={styles.garbage}>
+          {tipoLixo?.map((item, index) => (
+            <View key={index} style={styles.garbage}>
               <Garbage num={item} />
             </View>
           ))}
