@@ -8,17 +8,28 @@ import papel from '../../assets/kindOfTrash/paper.png';
 import metal from '../../assets/kindOfTrash/metal.png';
 
 type ITipoLixo = {
-  num: number
-}
-export const Garbage = ({num}: ITipoLixo) => {
+  tipo: string;
+};
+export const Garbage = ({ tipo }: ITipoLixo) => {
+  const tipoToNum: { [key: string]: number } = {
+    Organic: 0,
+    Plastic: 1,
+    Glass: 2,
+    Batteries: 3,
+    Paper: 4,
+    Metal: 5,
+  };
+
+  const num = tipoToNum[tipo];
   const tipos = [organico, plastico, vidro, bateria, papel, metal];
 
   return (
     <Image
       source={tipos[num]}
       style={{
-          width: 20,
-          height: 20,
+        width: 15,
+        height: 15,
+        resizeMode: 'contain',
       }}
     />
   );

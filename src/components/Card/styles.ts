@@ -35,19 +35,20 @@ export const styles = StyleSheet.create({
   },
   garbages: {
     position: 'absolute',
-    width: 10,
-    height: 10,
-    top: 0,
-    right: 10,
+    flex: 1,
+    top: 5,
+    right: 5,
     flexDirection: 'row',
     gap: 3,
     zIndex: 1,
-
-    borderWidth: 1,
+    borderRadius: 5,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   garbage: {
-    width: 10,
-    height: 10,
+    width: 20,
+    height: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textContainer: {
     paddingHorizontal: 5,

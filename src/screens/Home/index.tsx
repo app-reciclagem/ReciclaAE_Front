@@ -22,16 +22,13 @@ export const Home = () => {
   const options = ['All', 'Plastic', 'Paper', 'Metal', 'Organic', 'Glass', 'Batteries'];
 
   const handleSearch = async () => {
-    console.log('handleSearch');
-    // try {
-    //   // Realize a chamada à API utilizando o searchTerm
-    //   // e atualize os resultados da pesquisa com setSearchResults
-    //   const response = await fetch(`https://api.example.com/search?q=${searchTerm}`);
-    //   const data = await response.json();
-    //   setSearchResults(data.results);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    try {
+      const response = await API.get(`/points/searchterm/${searchTerm}`);
+      const data = await response.data;
+      setSearchResults(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const getPoints = async () => {

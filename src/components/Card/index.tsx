@@ -6,8 +6,8 @@ import { Image } from 'react-native';
 import { Garbage } from '../Garbage/index';
 
 export type IPonto = {
-  tipoLixo: number[];
-  photo: string;
+  tipoLixo: string[];
+  photo?: string;
   name: string;
   time: string;
   latitude?: number;
@@ -24,7 +24,7 @@ export const Card = ({ tipoLixo, photo, name, time }: IPonto) => {
         <View style={styles.garbages}>
           {tipoLixo?.map((item, index) => (
             <View key={index} style={styles.garbage}>
-              <Garbage num={item} />
+              <Garbage tipo={item} />
             </View>
           ))}
         </View>
