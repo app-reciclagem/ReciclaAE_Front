@@ -37,7 +37,6 @@ export const Home = () => {
   const getPoints = async () => {
     const result = await API.get('points');
     const points = result.data as IPonto[] | null;
-    console.log(points);
 
     setSearchResults(points);
   };

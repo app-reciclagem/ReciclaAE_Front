@@ -1,20 +1,12 @@
-import { useState } from 'react';
-import {
-  Keyboard,
-  KeyboardAvoidingView,
-  Text,
-  TextInput,
-  TouchableWithoutFeedback,
-  View,
-  Image,
-} from 'react-native';
 import { RouteProp } from '@react-navigation/native';
+import { useState } from 'react';
+import { Image, View } from 'react-native';
 
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Header } from '../../components/Header';
 import { Login } from '../../components/Login';
 import { Register } from '../../components/Register';
-import { Header } from '../../components/Header';
 import { styles } from './styles';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 type RootStackParamList = {
   LoginRegister: { is: boolean };
