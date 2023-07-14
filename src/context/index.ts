@@ -6,6 +6,7 @@ interface IContext {
   logout(): Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   isLogado: boolean;
+  loadStorage: () => void;
 }
 
 export const AuthContext = createContext<IContext>({} as IContext);

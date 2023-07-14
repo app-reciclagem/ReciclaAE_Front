@@ -29,8 +29,6 @@ export const getAddressAsync = async (setAddress: SetAddressFunction) => {
       longitude: location.coords.longitude,
     });
 
-    console.log('voida'  + JSON.stringify(addressResponse));
-
     // Extrai o primeiro resultado do endereço e define no estado
     if (addressResponse.length > 0) {
       const firstAddress = addressResponse[0];

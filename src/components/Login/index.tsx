@@ -2,18 +2,17 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Text,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
-  TouchableOpacity,
 } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
+import { useMyContext } from '../../context/hook';
+import { ButtonSocialGoogle } from '../ButtonSocialGoogle/ButtonSocialGoogle';
 import { ControllerTextInput } from '../ControllerTextInput';
 import { styles } from './styles';
-import { useForm } from 'react-hook-form';
-import { ButtonSocialGoogle } from '../ButtonSocialGoogle/ButtonSocialGoogle';
-import { API } from '../../api';
-import { useMyContext } from '../../context/hook';
-import { useNavigation } from '@react-navigation/native';
 
 type FormDataLogin = {
   email: string;
@@ -21,7 +20,6 @@ type FormDataLogin = {
 };
 
 export const Login = () => {
-  const navigation = useNavigation();
   const {
     control,
     handleSubmit,

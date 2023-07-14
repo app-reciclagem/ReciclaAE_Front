@@ -3,7 +3,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 import { styles } from './styles';
 import { Image } from 'react-native';
-import {Garbage} from '../Garbage/index'
+import { Garbage } from '../Garbage/index';
 
 export type IPonto = {
   tipoLixo: number[];
@@ -18,8 +18,6 @@ export type IPonto = {
 };
 
 export const Card = ({ tipoLixo, photo, name, time }: IPonto) => {
-  console.log(tipoLixo);
-
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>

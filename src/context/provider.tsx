@@ -24,8 +24,6 @@ export const AuthProvider = ({ children }: IProps) => {
   };
 
   const login = async (email: string, password: string) => {
-
-
     const dados = {
       email,
       password,
@@ -35,7 +33,7 @@ export const AuthProvider = ({ children }: IProps) => {
       const response = await API.post('/auth/user', dados);
 
       const { user, token } = response.data as ResponseLoginData;
-      console.log({user, token});
+      console.log({ user, token });
 
       API.defaults.headers.common.Authorization = `Bearer ${token}`;
 
@@ -61,7 +59,7 @@ export const AuthProvider = ({ children }: IProps) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ logout, login, isLogado: !!user, user }}>
+    <AuthContext.Provider value={{ logout, login, isLogado: !!user, user, loadStorage }}>
       {children}
     </AuthContext.Provider>
   );
